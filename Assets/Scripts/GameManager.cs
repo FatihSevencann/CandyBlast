@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject tileManager, spawnPointPrefab, CameraManager;
+    private GameObject tileManager, spawnPointPrefab, CameraManager,GameMain;
     private GameObject[,] Tiles;
     List<GameObject> SpawnPoints;
     public static GameManager instance; //singleton
@@ -95,12 +95,13 @@ public class GameManager : MonoBehaviour
     private void CreateTileSet()
     {
         Tiles = new GameObject[GridX,GridY];
+      
 
         for (int x = 0; x < GridX; x++)
         {
             for (int y = 0; y < GridY; y++)
             {
-               // print("x:" + x + "y: " + y);
+               
                 GameObject tile = Instantiate(tileManager, new Vector3(x,y), Quaternion.identity);
                 Vector2Int tileLocation = new Vector2Int(x,y);
                 tile.GetComponent<TileManager>().SetTile(ColorChoose,tileLocation);
@@ -122,12 +123,10 @@ public class GameManager : MonoBehaviour
             {
                 if (Tiles[x, y].GetComponent<TileManager>().isGroup == false)
                 {
-                   
-
+                    
                      CheckForNeighbours(x, y, Tiles[x, y].GetComponent<TileManager>().Color);
                 }
             }
-
         }
         if (ShuffleCheck)
         {
