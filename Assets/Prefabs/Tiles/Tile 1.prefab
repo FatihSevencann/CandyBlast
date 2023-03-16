@@ -106,18 +106,22 @@ MonoBehaviour:
   isGroup: 0
   isDestroy: 0
   tileSprites:
-  - {fileID: 21300000, guid: c19870e1d1b9b0142aea1658f105bb19, type: 3}
-  - {fileID: 21300000, guid: df6cc1f5dd070a14ab0703ba7fdac18c, type: 3}
-  - {fileID: 21300000, guid: 235f0f2b68cfcc34d8255d3d8ea6adcd, type: 3}
-  - {fileID: 21300000, guid: c19870e1d1b9b0142aea1658f105bb19, type: 3}
-  - {fileID: 21300000, guid: beeaa5b0570db6e45acc09ec4d4133f1, type: 3}
-  - {fileID: 21300000, guid: 89cc45ceaf17dba47a96dab334d4697c, type: 3}
-  - {fileID: 21300000, guid: 77aaa3d7e96e8c842ae9fcd044676d0e, type: 3}
-  - {fileID: 21300000, guid: 2389a7827ad5d52438cb54e51b5ada3e, type: 3}
-  - {fileID: 21300000, guid: 0635f1d2e1f3f844a99146946507ec7f, type: 3}
   - {fileID: 21300000, guid: b5f805689b390f64db4b3af69ddeb035, type: 3}
   - {fileID: 21300000, guid: 74ea2877c3460f342b75873420af6609, type: 3}
   - {fileID: 21300000, guid: e1008669e6e65e744b306137a0964b08, type: 3}
+  - {fileID: 21300000, guid: 786e83a81da98ac44b90631943cc7b50, type: 3}
+  - {fileID: 21300000, guid: c19870e1d1b9b0142aea1658f105bb19, type: 3}
+  - {fileID: 21300000, guid: df6cc1f5dd070a14ab0703ba7fdac18c, type: 3}
+  - {fileID: 21300000, guid: 235f0f2b68cfcc34d8255d3d8ea6adcd, type: 3}
+  - {fileID: 21300000, guid: b08c2153691ff764d99408c35cdc50c3, type: 3}
+  - {fileID: 21300000, guid: 24ed93e4b08872241971ea4287f3c105, type: 3}
+  - {fileID: 21300000, guid: beeaa5b0570db6e45acc09ec4d4133f1, type: 3}
+  - {fileID: 21300000, guid: 89cc45ceaf17dba47a96dab334d4697c, type: 3}
+  - {fileID: 21300000, guid: 708197f1bc80aec4fbc5bc721caf9012, type: 3}
+  - {fileID: 21300000, guid: 77aaa3d7e96e8c842ae9fcd044676d0e, type: 3}
+  - {fileID: 21300000, guid: 2389a7827ad5d52438cb54e51b5ada3e, type: 3}
+  - {fileID: 21300000, guid: 0635f1d2e1f3f844a99146946507ec7f, type: 3}
+  - {fileID: 21300000, guid: 1515829ba17ef6c468af211ec6efebee, type: 3}
   moveDownLenght: 0
   maxColor: 0
 --- !u!222 &1075744639586860314

@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
-        howLeftMove.text = isLeftMove.ToString();
-        textPoint = 0; scoreBar = 0;addPoint = 0;
+        // howLeftMove.text = isLeftMove.ToString();
+        // textPoint = 0; scoreBar = 0;addPoint = 0;
     }
     private void Start()
     {
@@ -331,126 +331,126 @@ public class GameManager : MonoBehaviour
             
 
 
-            if (instance.CompareTag("Level1") )
-            {
-                if(slider.value < 100)
-                {
-                    if (addPoint < 5)
-                    {
-                        textPoint += addPoint;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint;
-                    }
-
-                    else if (addPoint >= 5 && addPoint < 7)
-                    {
-                        textPoint += addPoint * 2;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint * 2;
-                    }
-                    else if (addPoint >= 7 && addPoint < 9)
-                    {
-                        textPoint += addPoint * 4;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint * 4;
-                    }
-                    else
-                    {
-                        textPoint += addPoint * 6;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint * 6;
-
-                    }
-
-                }
-                else
-                {
-                    GamePanel.SetActive(false);
-                    NextLevel.SetActive(true);
-                }
-            }
-
-            if (instance.CompareTag("Level2") )
-            {
-                if(slider.value < 150)
-                {
-                    if (addPoint < 5)
-                    {
-                        textPoint += addPoint;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint;
-                    }
-
-                    else if (addPoint >= 5 && addPoint < 7)
-                    {
-                        textPoint += addPoint * 2;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*2;
-                    }
-                    else if (addPoint >= 7 && addPoint < 9)
-                    {
-                        textPoint += addPoint * 4;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*4;
-                    }
-                    else
-                    {
-                        textPoint += addPoint * 6;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*6;
-
-                    }
-
-                }
-                else
-                {
-                    GamePanel.SetActive(false);
-                    NextLevel.SetActive(true);
-
-                }
-                
-            }
-
-
-            if (instance.CompareTag("Level3") )
-            {
-                if (slider.value < 200)
-                {
-                    if (addPoint < 5)
-                    {
-                        textPoint += addPoint;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint;
-                    }
-
-                    else if (addPoint >= 5 && addPoint < 8)
-                    {
-                        textPoint += addPoint * 2;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*2;
-                    }
-                    else if (addPoint >= 8 && addPoint < 10)
-                    {
-                        textPoint += addPoint * 4;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*4;
-                    }
-                    else
-                    {
-                        textPoint += addPoint * 6;
-                        scoreText.text = textPoint.ToString();
-                        slider.value += addPoint*6;
-
-                    }
-
-                }
-                else
-                {
-                    GamePanel.SetActive(false);
-                    NextLevel.SetActive(true);
-                }
-               
-            }
+            // if (instance.CompareTag("Level1") )
+            // {
+            //     if(slider.value < 100)
+            //     {
+            //         if (addPoint < 5)
+            //         {
+            //             textPoint += addPoint;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint;
+            //         }
+            //
+            //         else if (addPoint >= 5 && addPoint < 7)
+            //         {
+            //             textPoint += addPoint * 2;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint * 2;
+            //         }
+            //         else if (addPoint >= 7 && addPoint < 9)
+            //         {
+            //             textPoint += addPoint * 4;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint * 4;
+            //         }
+            //         else
+            //         {
+            //             textPoint += addPoint * 6;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint * 6;
+            //
+            //         }
+            //
+            //     }
+            //     else
+            //     {
+            //         GamePanel.SetActive(false);
+            //         NextLevel.SetActive(true);
+            //     }
+            // }
+            //
+            // if (instance.CompareTag("Level2") )
+            // {
+            //     if(slider.value < 150)
+            //     {
+            //         if (addPoint < 5)
+            //         {
+            //             textPoint += addPoint;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint;
+            //         }
+            //
+            //         else if (addPoint >= 5 && addPoint < 7)
+            //         {
+            //             textPoint += addPoint * 2;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*2;
+            //         }
+            //         else if (addPoint >= 7 && addPoint < 9)
+            //         {
+            //             textPoint += addPoint * 4;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*4;
+            //         }
+            //         else
+            //         {
+            //             textPoint += addPoint * 6;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*6;
+            //
+            //         }
+            //
+            //     }
+            //     else
+            //     {
+            //         GamePanel.SetActive(false);
+            //         NextLevel.SetActive(true);
+            //
+            //     }
+            //     
+            // }
+            //
+            //
+            // if (instance.CompareTag("Level3") )
+            // {
+            //     if (slider.value < 200)
+            //     {
+            //         if (addPoint < 5)
+            //         {
+            //             textPoint += addPoint;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint;
+            //         }
+            //
+            //         else if (addPoint >= 5 && addPoint < 8)
+            //         {
+            //             textPoint += addPoint * 2;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*2;
+            //         }
+            //         else if (addPoint >= 8 && addPoint < 10)
+            //         {
+            //             textPoint += addPoint * 4;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*4;
+            //         }
+            //         else
+            //         {
+            //             textPoint += addPoint * 6;
+            //             scoreText.text = textPoint.ToString();
+            //             slider.value += addPoint*6;
+            //
+            //         }
+            //
+            //     }
+            //     else
+            //     {
+            //         GamePanel.SetActive(false);
+            //         NextLevel.SetActive(true);
+            //     }
+            //    
+            // }
           
         }
 
@@ -459,13 +459,13 @@ public class GameManager : MonoBehaviour
     public void CheckForClick(Vector2Int location, int color)
     {
         FindDestroyObjects(location.x, location.y, color);
-        howLeftMove.text = isLeftMove.ToString();
-        if (isLeftMove <= 0)
-        {
-            GamePanel.SetActive(false);
-            GameOverPanel.SetActive(true);
-
-        }
+        // howLeftMove.text = isLeftMove.ToString();
+        // if (isLeftMove <= 0)
+        // {
+        //     GamePanel.SetActive(false);
+        //     GameOverPanel.SetActive(true);
+        //
+        // }
 
     }
 
