@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,28 +15,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Range(1, 6)]
     private int ColorChoose;
-
     [SerializeField]
     private int imageATreshold, imageBTreshold, imageCTreshold;
-
+    [SerializeField] private int isLeftMove;
     [SerializeField]
-    public Slider slider;
-    [SerializeField]
-    TextMeshProUGUI scoreText, howLeftMove;
-    int Level = 0;
-    int isLeftMove,textPoint,scoreBar;
-    [SerializeField]
-    private GameObject GameOverPanel,GamePanel,NextLevel;
-    private TileManager tile_Manager;
-
-
-    [SerializeField]
-    private GameObject tileManager, spawnPointPrefab, CameraManager,GameMain;
+    private GameObject tileManager, spawnPointPrefab, CameraManager;
     private GameObject[,] Tiles;
     List<GameObject> SpawnPoints;
     public static GameManager instance; //singleton
     private bool ShuffleCheck = false;
-    int addPoint;
+    private int neightborCount, Score = 0;
+
+   
 
     private void Awake()
     {
@@ -43,77 +34,43 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("More than one Tile Manager");
         else
             instance = this;
-
-        // howLeftMove.text = isLeftMove.ToString();
-        // textPoint = 0; scoreBar = 0;addPoint = 0;
     }
     private void Start()
     {
         CameraLocation();
         CreateSpawnManager();
         CreateTileSet();
-        
-        if (instance.CompareTag("Level1"))
-        {
-            slider.maxValue = 100;
-            isLeftMove = 25;
-            howLeftMove.text = isLeftMove.ToString();
-
-        }
-            
-        
-        else if (instance.CompareTag("Level2"))
-        {
-            slider.maxValue = 150;
-            isLeftMove = 30;
-            howLeftMove.text = isLeftMove.ToString();
-
-        }
-           
-        else if (instance.CompareTag("Level3"))
-        {
-            slider.maxValue = 200;
-            isLeftMove = 35;
-            howLeftMove.text = isLeftMove.ToString();
-
-        }
-            
-
-
+          
     }
-
     private void CameraLocation()=>CameraManager.transform.position = new Vector3((GridX-0.85f) / 2, (GridY+5f ) / 2 ,-15);
-
-    
     private void CreateSpawnManager()
     {
         SpawnPoints = new List<GameObject>();
         for (int i = 0; i < GridX; i++)
             SpawnPoints.Add(Instantiate(spawnPointPrefab, new Vector3(i, GridY), Quaternion.identity));
     }
-
     private void CreateTileSet()
     {
         Tiles = new GameObject[GridX,GridY];
-      
-
+        
         for (int x = 0; x < GridX; x++)
         {
             for (int y = 0; y < GridY; y++)
             {
-               
-                GameObject tile = Instantiate(tileManager, new Vector3(x,y), Quaternion.identity);
+            
+               GameObject tile = Instantiate(tileManager, new Vector3(x,y), Quaternion.identity);
+                tile.GetComponentsInChildren<GameManager>();
                 Vector2Int tileLocation = new Vector2Int(x,y);
                 tile.GetComponent<TileManager>().SetTile(ColorChoose,tileLocation);
-
                 Tiles[x, y] = tile;
                 tile.SetActive(true);
             }
-
         }
         CreateGroups();
     }
 
+    public void NextLevel()=>UIManager.instance.Next.SetActive(true);
+   
     private void CreateGroups()
     {
        ShuffleCheck = true;
@@ -132,10 +89,7 @@ public class GameManager : MonoBehaviour
         {
             print("Shuffle Time");
             Shuffle();
-
         }
-           
-
     }
     private void Shuffle()
     {
@@ -144,16 +98,10 @@ public class GameManager : MonoBehaviour
             for(int y=0; y < GridY; y++)
             {
                 Tiles[x, y].GetComponent<TileManager>().ChangeColorRandom();
-                             
             }
-
         }
         CreateGroups();
-
     }
-
-
-
     private void CheckForNeighbours(int x, int y, int color)
     {
         List<GameObject> matchNeighbours = new List<GameObject>();
@@ -299,8 +247,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-           
-
             foreach (GameObject gameObject in matchNeighbours)
             {
                 Vector2Int destroyIndex = gameObject.GetComponent<TileManager>().index;
@@ -322,154 +268,39 @@ public class GameManager : MonoBehaviour
                 gameObject.GetComponent<TileManager>().StartMovingTile();
 
             }
-
-
             SpawnTiles();
             RefreshTile();
+            neightborCount = matchNeighbours.Count;
+            HeaderController(neightborCount);
 
-            addPoint = matchNeighbours.Count;
-            
-
-
-            // if (instance.CompareTag("Level1") )
-            // {
-            //     if(slider.value < 100)
-            //     {
-            //         if (addPoint < 5)
-            //         {
-            //             textPoint += addPoint;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint;
-            //         }
-            //
-            //         else if (addPoint >= 5 && addPoint < 7)
-            //         {
-            //             textPoint += addPoint * 2;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint * 2;
-            //         }
-            //         else if (addPoint >= 7 && addPoint < 9)
-            //         {
-            //             textPoint += addPoint * 4;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint * 4;
-            //         }
-            //         else
-            //         {
-            //             textPoint += addPoint * 6;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint * 6;
-            //
-            //         }
-            //
-            //     }
-            //     else
-            //     {
-            //         GamePanel.SetActive(false);
-            //         NextLevel.SetActive(true);
-            //     }
-            // }
-            //
-            // if (instance.CompareTag("Level2") )
-            // {
-            //     if(slider.value < 150)
-            //     {
-            //         if (addPoint < 5)
-            //         {
-            //             textPoint += addPoint;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint;
-            //         }
-            //
-            //         else if (addPoint >= 5 && addPoint < 7)
-            //         {
-            //             textPoint += addPoint * 2;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*2;
-            //         }
-            //         else if (addPoint >= 7 && addPoint < 9)
-            //         {
-            //             textPoint += addPoint * 4;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*4;
-            //         }
-            //         else
-            //         {
-            //             textPoint += addPoint * 6;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*6;
-            //
-            //         }
-            //
-            //     }
-            //     else
-            //     {
-            //         GamePanel.SetActive(false);
-            //         NextLevel.SetActive(true);
-            //
-            //     }
-            //     
-            // }
-            //
-            //
-            // if (instance.CompareTag("Level3") )
-            // {
-            //     if (slider.value < 200)
-            //     {
-            //         if (addPoint < 5)
-            //         {
-            //             textPoint += addPoint;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint;
-            //         }
-            //
-            //         else if (addPoint >= 5 && addPoint < 8)
-            //         {
-            //             textPoint += addPoint * 2;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*2;
-            //         }
-            //         else if (addPoint >= 8 && addPoint < 10)
-            //         {
-            //             textPoint += addPoint * 4;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*4;
-            //         }
-            //         else
-            //         {
-            //             textPoint += addPoint * 6;
-            //             scoreText.text = textPoint.ToString();
-            //             slider.value += addPoint*6;
-            //
-            //         }
-            //
-            //     }
-            //     else
-            //     {
-            //         GamePanel.SetActive(false);
-            //         NextLevel.SetActive(true);
-            //     }
-            //    
-            // }
-          
         }
-
-
     }
+
+    private void HeaderController(int neightborCount)
+    {
+        Score += neightborCount;
+        Definations.instance.scoreText.text = Score.ToString();
+        Definations.instance.slider.value += neightborCount;
+        if(Definations.instance.slider.value==50)
+            NextLevel();
+    }
+
     public void CheckForClick(Vector2Int location, int color)
     {
         FindDestroyObjects(location.x, location.y, color);
-        // howLeftMove.text = isLeftMove.ToString();
-        // if (isLeftMove <= 0)
-        // {
-        //     GamePanel.SetActive(false);
-        //     GameOverPanel.SetActive(true);
-        //
-        // }
-
+        IsLeftMove();
     }
 
-  
+    private void IsLeftMove()
+    {
+        Definations.instance.howLeftMove.text = isLeftMove.ToString();
+        
+        if (isLeftMove <= 0)
+        {
+            UIManager.instance.GameOverPanel.SetActive(true);
+        }
+    }
+
 
     public void AssingTiles(GameObject Tile, Vector2Int index)
     {
@@ -499,7 +330,6 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < GridY; j++)
             {
                 Tiles[i, j].GetComponent<TileManager>().isGroup = false;
- 
             }
         }
         CreateGroups();

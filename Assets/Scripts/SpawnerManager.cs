@@ -17,7 +17,6 @@ public class SpawnerManager : MonoBehaviour
     {
         gridY = (int)transform.position.y;
         gridX = (int)transform.position.x;
-
         groundForSpawner = transform.position + Vector3.up * spawnerYOffset;
         transform.position = groundForSpawner;
 
@@ -48,7 +47,6 @@ public class SpawnerManager : MonoBehaviour
         moving = true;
         Rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
-
     private void FixedUpdate()
     {
         if (moving)
