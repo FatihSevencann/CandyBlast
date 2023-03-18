@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+          
         }
         else
             Debug.LogWarning("More than one Tile Manager");
@@ -43,5 +43,9 @@ public class UIManager : MonoBehaviour
         GamePlay.SetActive(false);
         GameOverPopup.SetActive(true);
     }
+
+    public void NextLevelPopup()=> SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    public void Replay()=>SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+   
 
 }

@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //singleton
     private bool ShuffleCheck = false;
     private int neightborCount, Score = 0;
+
+    [SerializeField] private int[] Targets;
  
     
     private void Awake()
@@ -277,10 +279,29 @@ public class GameManager : MonoBehaviour
         Definations.instance.slider.value += neightborCount;
 
         float nextLevelTarget = Definations.instance.slider.value;
-        if ()
+        if (GridY ==5)
         {
-          UIManager.instance.NextLevel();
+            if (nextLevelTarget==50)
+            {
+                UIManager.instance.NextLevel();
+            }
         }
+        if (GridY ==7)
+        {
+            if (nextLevelTarget==75)
+            {
+                UIManager.instance.NextLevel();
+            }
+        }
+        if (GridY ==9)
+        {
+            if (nextLevelTarget==100)
+            {
+                UIManager.instance.NextLevel();
+            }
+        }
+       
+       
     }
 
     public void CheckForClick(Vector2Int location, int color)
