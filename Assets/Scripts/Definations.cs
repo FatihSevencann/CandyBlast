@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Definations : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText, howLeftMove;
+    public TextMeshProUGUI scoreText, howLeftMove,nextPopupText;
     public static Definations instance;
     public Slider slider;
     private void Awake()

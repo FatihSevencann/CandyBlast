@@ -864,7 +864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70956447234d33b40b396b67314a5843, type: 2}
   m_sharedMaterial: {fileID: -5263338218149616523, guid: 70956447234d33b40b396b67314a5843, type: 2}
@@ -1501,7 +1501,6 @@ MonoBehaviour:
   tileManager: {fileID: 2224128549295754234, guid: 001f6df1192df4af7ae3bfbfc5227530, type: 3}
   spawnPointPrefab: {fileID: 6956086172600118021, guid: f718c07a031dd432eba6d88fd301546c, type: 3}
   CameraManager: {fileID: 963194225}
-  Targets: 
 --- !u!224 &986599042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2227,6 +2226,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1059221449863207308, guid: d5728a3dcd08e40dcbf75eb864ccdc5b, type: 3}
+      propertyPath: m_text
+      value: 125
+      objectReference: {fileID: 0}
     - target: {fileID: 4191596839751790322, guid: d5728a3dcd08e40dcbf75eb864ccdc5b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2315,6 +2318,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1059221449573548163, guid: d5728a3dcd08e40dcbf75eb864ccdc5b, type: 3}
   m_PrefabInstance: {fileID: 1644969119}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1644969122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059221449863207308, guid: d5728a3dcd08e40dcbf75eb864ccdc5b, type: 3}
+  m_PrefabInstance: {fileID: 1644969119}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1828512786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 301888794}
   howLeftMove: {fileID: 2070475442}
+  nextPopupText: {fileID: 1644969122}
   slider: {fileID: 409712165}
 --- !u!1 &2070475440
 GameObject:
@@ -2789,11 +2804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7752918358127033802, guid: f3713b3806456bc43b1ff95bbcd18db3, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7752918358127033802, guid: f3713b3806456bc43b1ff95bbcd18db3, type: 3}
       propertyPath: m_MaxValue
-      value: 75
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752918358127033802, guid: f3713b3806456bc43b1ff95bbcd18db3, type: 3}
+      propertyPath: m_MinValue
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7752918358127033802, guid: f3713b3806456bc43b1ff95bbcd18db3, type: 3}
       propertyPath: m_TargetGraphic

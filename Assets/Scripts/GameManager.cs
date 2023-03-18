@@ -25,11 +25,8 @@ public class GameManager : MonoBehaviour
     List<GameObject> SpawnPoints;
     public static GameManager instance; //singleton
     private bool ShuffleCheck = false;
-    private int neightborCount, Score = 0;
-
-    [SerializeField] private int[] Targets;
- 
-    
+    private int neightborCount;
+    private static int Score=0;
     private void Awake()
     {
          if (instance != null)
@@ -42,9 +39,7 @@ public class GameManager : MonoBehaviour
         CameraLocation();
         CreateSpawnManager();
         CreateTileSet();
-       
     }
-    
     private void CameraLocation()=>CameraManager.transform.position = new Vector3((GridX-0.85f) / 2, (GridY+5f ) / 2 ,-15);
     private void CreateSpawnManager()
     {
@@ -268,48 +263,42 @@ public class GameManager : MonoBehaviour
             RefreshTile();
             neightborCount = matchNeighbours.Count;
             HeaderController(neightborCount);
-
         }
     }
-
     private void HeaderController(int neightborCount)
     {
         Score += neightborCount;
         Definations.instance.scoreText.text = Score.ToString();
         Definations.instance.slider.value += neightborCount;
+        print(Score);
 
         float nextLevelTarget = Definations.instance.slider.value;
         if (GridY ==5)
         {
-            if (nextLevelTarget==50)
+            if (nextLevelTarget>=50)
             {
                 UIManager.instance.NextLevel();
+                Definations.instance.nextPopupText.text= Score.ToString();
             }
         }
         if (GridY ==7)
         {
-            if (nextLevelTarget==75)
-            {
+            if (nextLevelTarget>=125)
                 UIManager.instance.NextLevel();
-            }
+            Definations.instance.nextPopupText.text= Score.ToString();
         }
-        if (GridY ==9)
+        if (GridY==9)
         {
-            if (nextLevelTarget==100)
-            {
+            if (nextLevelTarget>=225)
                 UIManager.instance.NextLevel();
-            }
+                 Definations.instance.nextPopupText.text= Score.ToString();
         }
-       
-       
     }
-
     public void CheckForClick(Vector2Int location, int color)
     {
         FindDestroyObjects(location.x, location.y, color);
         IsLeftMove();
     }
-
     private void IsLeftMove()
     {
         Definations.instance.howLeftMove.text = isLeftMove.ToString();
@@ -317,22 +306,19 @@ public class GameManager : MonoBehaviour
         if (isLeftMove <= 0)
         {
             UIManager.instance.GameOver();
+            Score = 0;
         }
     }
-
-
     public void AssingTiles(GameObject Tile, Vector2Int index)
     {
         Tiles[index.x, index.y] = Tile;
     }
-
     public void DestroyTile(GameObject tile)
     {
         tileManager.SetActive(false);
         SpawnPoints[tile.GetComponent<TileManager>().index.x].GetComponent<SpawnerManager>().AddToSpawnList(tile);
 
     }
-
     public void SpawnTiles()
     {
         for (int i = 0; i < GridX; i++)
@@ -341,7 +327,6 @@ public class GameManager : MonoBehaviour
             SpawnPoints[i].GetComponent<SpawnerManager>().StartSpawning();
         }
     }
-
     public void RefreshTile()
     {
         for (int i = 0; i < GridX; i++)
@@ -353,5 +338,4 @@ public class GameManager : MonoBehaviour
         }
         CreateGroups();
     }
-
 }
