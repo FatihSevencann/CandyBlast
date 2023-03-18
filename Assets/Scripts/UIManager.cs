@@ -1,11 +1,7 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using UnityEngine.UI;
 public class UIManager : MonoBehaviour
-{ 
-    
+{
     public GameObject Popups,PausePopup,GamePlay,NextPopup,GameOverPopup;
     public static UIManager instance;
     private void Awake()
@@ -13,7 +9,6 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-          
         }
         else
             Debug.LogWarning("More than one Tile Manager");

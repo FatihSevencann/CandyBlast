@@ -1325,6 +1325,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &864682466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059221449863207308, guid: c1b5547c8c16c374799866935b19b344, type: 3}
+  m_PrefabInstance: {fileID: 77213181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887286173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2551,7 @@ MonoBehaviour:
   scoreText: {fileID: 301888794}
   howLeftMove: {fileID: 2070475442}
   nextPopupText: {fileID: 1962272711}
+  gameoverText: {fileID: 864682466}
   slider: {fileID: 409712165}
 --- !u!114 &1962272711 stripped
 MonoBehaviour:

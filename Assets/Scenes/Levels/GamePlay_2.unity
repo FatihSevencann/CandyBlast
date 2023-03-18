@@ -362,6 +362,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1059221449573548163, guid: c1b5547c8c16c374799866935b19b344, type: 3}
   m_PrefabInstance: {fileID: 77213181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &77213184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059221449863207308, guid: c1b5547c8c16c374799866935b19b344, type: 3}
+  m_PrefabInstance: {fileID: 77213181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &212391865 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7983343827379668321, guid: 27fe163c5e813a443b0b7bf2d6485c82, type: 3}
@@ -2555,6 +2566,7 @@ MonoBehaviour:
   scoreText: {fileID: 301888794}
   howLeftMove: {fileID: 2070475442}
   nextPopupText: {fileID: 1644969122}
+  gameoverText: {fileID: 77213184}
   slider: {fileID: 409712165}
 --- !u!1 &2070475440
 GameObject:

@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using Unity.VisualScripting;
-using UnityEngine.Tilemaps;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +34,8 @@ public class GameManager : MonoBehaviour
         CameraLocation();
         CreateSpawnManager();
         CreateTileSet();
+        Definations.instance.scoreText.text = Score.ToString();
+        
     }
     private void CameraLocation()=>CameraManager.transform.position = new Vector3((GridX-0.85f) / 2, (GridY+5f ) / 2 ,-15);
     private void CreateSpawnManager()
@@ -277,15 +274,22 @@ public class GameManager : MonoBehaviour
         {
             if (nextLevelTarget>=50)
             {
+              
                 UIManager.instance.NextLevel();
                 Definations.instance.nextPopupText.text= Score.ToString();
+             
+                
             }
         }
         if (GridY ==7)
         {
-            if (nextLevelTarget>=125)
+            if (nextLevelTarget >= 125)
+            {
                 UIManager.instance.NextLevel();
-            Definations.instance.nextPopupText.text= Score.ToString();
+                Definations.instance.nextPopupText.text= Score.ToString();
+                Definations.instance.scoreText.text = Score.ToString();
+            }
+             
         }
         if (GridY==9)
         {
@@ -306,6 +310,8 @@ public class GameManager : MonoBehaviour
         if (isLeftMove <= 0)
         {
             UIManager.instance.GameOver();
+            Definations.instance.gameoverText.text = Score.ToString();
+            
             Score = 0;
         }
     }

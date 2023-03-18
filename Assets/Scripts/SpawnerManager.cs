@@ -12,24 +12,19 @@ public class SpawnerManager : MonoBehaviour
     Vector3 groundForSpawner;
     Rigidbody2D Rb;
     private void Awake()=>  Rb = GetComponent<Rigidbody2D>();
-    
     private void Start()
     {
         gridY = (int)transform.position.y;
         gridX = (int)transform.position.x;
         groundForSpawner = transform.position + Vector3.up * spawnerYOffset;
         transform.position = groundForSpawner;
-
     }
-
     public void AddToSpawnList(GameObject tile) => ObjectstoSpawn.Add(tile);
-   
     public void StartSpawning()
     {
         int TileAmount = ObjectstoSpawn.Count;
         if (TileAmount>0)
         {
-
             IncreaseSpawn(TileAmount);
             for (int i = 0; i < TileAmount; i++)
             {
