@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GamePlay.unity
+    path: Assets/Scenes/Levels/GamePlay_1.unity
+    guid: 501ceba9042654423ad88d5eb5b8bdf8
+  - enabled: 1
+    path: Assets/Scenes/Levels/GamePlay_2.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/CandyBlastLevel2.unity
-    guid: ace48c986fd0e4ec9a619bce237021a5
-  - enabled: 1
-    path: Assets/Scenes/CandyBlastLevel3.unity
-    guid: 57b0328e67fb04887ad9167477acb9e4
-  - enabled: 1
-    path: Assets/Scenes/end.unity
-    guid: d7c92bde372604648a93cb13cf73b122
+    path: Assets/Scenes/Levels/GamePlay_3.unity
+    guid: 52fb4cc6e666243008f57aa39121e272
   m_configObjects: {}

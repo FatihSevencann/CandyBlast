@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,10 @@ using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int Level;
     [SerializeField]
     [Range(2, 10)]
     private int GridX, GridY;
-
     [SerializeField]
     [Range(1, 6)]
     private int ColorChoose;
@@ -25,9 +26,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //singleton
     private bool ShuffleCheck = false;
     private int neightborCount, Score = 0;
-
-   
-
+ 
+    
     private void Awake()
     {
          if (instance != null)
@@ -40,8 +40,9 @@ public class GameManager : MonoBehaviour
         CameraLocation();
         CreateSpawnManager();
         CreateTileSet();
-          
+       
     }
+    
     private void CameraLocation()=>CameraManager.transform.position = new Vector3((GridX-0.85f) / 2, (GridY+5f ) / 2 ,-15);
     private void CreateSpawnManager()
     {
@@ -68,9 +69,7 @@ public class GameManager : MonoBehaviour
         }
         CreateGroups();
     }
-
-    public void NextLevel()=>UIManager.instance.Next.SetActive(true);
-   
+    
     private void CreateGroups()
     {
        ShuffleCheck = true;
@@ -106,9 +105,7 @@ public class GameManager : MonoBehaviour
     {
         List<GameObject> matchNeighbours = new List<GameObject>();
         List<GameObject> nextChecks = new List<GameObject>();
-
-
-    //left check
+        //left check
     nextChecks:
         if (x > 0 && Tiles[x - 1, y].GetComponent<TileManager>().isGroup == false && Tiles[x - 1, y].GetComponent<TileManager>().Color == color)
         {
@@ -125,16 +122,13 @@ public class GameManager : MonoBehaviour
             Tiles[x + 1, y].GetComponent<TileManager>().isGroup = true;
 
         }
-
         //up check
         if (y < GridY - 1 && Tiles[x, y + 1].GetComponent<TileManager>().isGroup == false && Tiles[x, y + 1].GetComponent<TileManager>().Color == color)
         {
             matchNeighbours.Add(Tiles[x, y + 1]);
             nextChecks.Add(Tiles[x, y + 1]);
             Tiles[x, y + 1].GetComponent<TileManager>().isGroup = true;
-
         }
-
         //downcheck
         if (y > 0 && Tiles[x, y - 1].GetComponent<TileManager>().isGroup == false && Tiles[x, y - 1].GetComponent<TileManager>().Color == color)
         {
@@ -281,8 +275,12 @@ public class GameManager : MonoBehaviour
         Score += neightborCount;
         Definations.instance.scoreText.text = Score.ToString();
         Definations.instance.slider.value += neightborCount;
-        if(Definations.instance.slider.value==50)
-            NextLevel();
+
+        float nextLevelTarget = Definations.instance.slider.value;
+        if ()
+        {
+          UIManager.instance.NextLevel();
+        }
     }
 
     public void CheckForClick(Vector2Int location, int color)
@@ -297,7 +295,7 @@ public class GameManager : MonoBehaviour
         
         if (isLeftMove <= 0)
         {
-            UIManager.instance.GameOverPanel.SetActive(true);
+            UIManager.instance.GameOver();
         }
     }
 

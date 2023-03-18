@@ -4,12 +4,10 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
-{
-    [SerializeField] private GameObject Popups,PausePopup,GamePlay;
-    public GameObject GameOverPanel,Next;
+{ 
     
+    public GameObject Popups,PausePopup,GamePlay,NextPopup,GameOverPopup;
     public static UIManager instance;
-
     private void Awake()
     {
         if (instance == null)
@@ -20,22 +18,30 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("More than one Tile Manager");
     }
-    public void NextLevel()=>SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-    public void Restart()=> SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    
     public void Exit()=> Application.Quit();
 
     public void PlayButton()
     {
         Popups.SetActive(true);
+        GamePlay.SetActive(false);
         PausePopup.SetActive(true);
-        
-    } 
-
+    }
     public void CloseButton()
-    {
-        GamePlay.SetActive(true);
+    {   GamePlay.SetActive(true);
         Popups.SetActive(false);
-        print("close close");
-    } 
+        PausePopup.SetActive(false);
+    }
+    public void NextLevel()
+    {   Popups.SetActive(true);
+        GamePlay.SetActive(false);
+        NextPopup.SetActive(true);
+    }
+    public void GameOver()
+    {
+        Popups.SetActive(true);
+        GamePlay.SetActive(false);
+        GameOverPopup.SetActive(true);
+    }
 
 }
